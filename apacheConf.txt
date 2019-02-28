@@ -1,0 +1,35 @@
+sudo nano moses.conf
+/home/apple/public_html
+costrategix@costrategix-desktop:~$ sudo nano /home/apple/public_html/index.html
+
+
+
+
+
+https://youtu.be/R0WHr_MCzsU
+
+paka steps
+
+costrategix@costrategix-desktop:~$ sudo useradd -m apple
+[sudo] password for costrategix: 
+costrategix@costrategix-desktop:~$ sudo mkdir /home/apple/public_html
+costrategix@costrategix-desktop:~$ sudo nano /home/apple/public_html/index.html
+costrategix@costrategix-desktop:~$ cd /etc/apache2
+costrategix@costrategix-desktop:/etc/apache2$ cd sites-available
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ sudo cp 000-default.conf apple.conf
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ ls
+000-default.conf  default-ssl.conf  george.conf.save  nano.save   rubanResume.com.conf
+apple.conf        george.conf       moses.conf        ruban.conf  rubanResume.com.conf.save
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ sudo nano apple.conf
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ ^C
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ sudo nano apple.conf
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ sudo a2ensite apple.conf
+Enabling site apple.
+To activate the new configuration, you need to run:
+  service apache2 reload
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ sudo /etc/init.d/apache2 restart
+[ ok ] Restarting apache2 (via systemctl): apache2.service.
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ sudo nano /etc/hosts
+costrategix@costrategix-desktop:/etc/apache2/sites-available$ 
+
+

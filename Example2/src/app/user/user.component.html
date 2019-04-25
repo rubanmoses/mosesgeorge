@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>Google Icons</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div style="text-align:right;" *ngIf="loginDisplay">
+    <br>
+  	<label>Your Name?
+    	<input #username />
+  	</label>
+    <br>
+	  <br/>
+  	<label>Your Password?
+    	<input type="password" #password />
+  	</label>
+  	<br>
+	  <br/>
+  	<button (click)="fetchInformationOfUser(username.value);">
+    	<i class="material-icons">&#xe87c;</i> Login
+  	</button>
+</div>
+<br>
+<br/>
+ <div *ngIf="userArray.length === 0 && displayUnAuthorized">
+	<h2>Your Name is not registered or you have entered wrong username!</h2>
+	<h3>Please Contact Admin For Details</h3>
+</div>
+  <br>
+	<br/>
+<div *ngIf="userArray.length !== 0">
+	  <button (click)="messageActivation();">
+    	 <i class="material-icons">&#xe0be;</i> Chat With Team Members
+    </button>
+  	<div *ngIf="messageActivationFlag">
+  		<h2>Message Section!</h2>
+  		<br>
+		<br/>
+  		<label>Your Group Members -
+			<select #optVal >
+   				<option [value]="user.userName" *ngFor="let user of userArray">{{user.userName|uppercase}}</option>
+ 			</select>
+		</label>
+		<br>
+		<br/>
+		<button (click)="chatWithUser(optVal.value);">
+    		<i class="material-icons">&#xe0bf;</i> Start Chat
+  	</button>
+ 		<div style="text-align:center" *ngIf="showSuccessSymbol">
+ 			<i class="material-icons" style="font-size:25px;color:blue">&#xe877;</i>
+ 		</div>
+ 		<div *ngIf="sentMessages.length !== 0">
+  			<h1>Conversation</h1>
+  				<div *ngFor="let sent of sentMessages" style="text-align:right;">
+  					You - {{sent.message}} 
+  				</div>
+  				<div *ngFor="let reply of replyMessages" style="text-align:left;">
+  					{{reply.fromuser}} - {{reply.message}}
+  				</div>
+  				<br>
+				  <br/>
+  				<label>Your Message -
+    				<input #message />
+  				</label>
+  				<button (click)="sendTheMessage(1,message.value,optVal.value);">
+    				<i class="material-icons">&#xe163;</i>
+  				</button>
+  	</div>
+  		<div *ngIf="sentMessages.length === 0 && checkForConversation">
+  			<h4> Oops! you have not spoke to {{optVal.value}}</h4>
+  			Start Now
+  			<br>
+			  <br/>
+  			<label>Your Message -
+    			<input #message />
+  			</label>
+  			<button (click)="sendTheMessage(1,message.value,optVal.value);">
+    			<i class="material-icons">&#xe163;</i>
+  			</button>
+  		</div>
+  	</div>
+</div>
+</body>
+</html>

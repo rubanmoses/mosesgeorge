@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title>Google Icons</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<h1> Welcome Admin </h1>
+<button (click)="getAllTheUsers();" style='margin-right:16px'>
+	<i class="material-icons">&#xe896;</i> List Existing Users
+ </button>
+
+ <button (click)="addUserActivate();" style='margin-right:16px'>
+	<i class="material-icons">&#xe7f0;</i> Add Users?
+ </button>
+<div style="text-align:center" *ngIf="DisplayList">
+	<br>
+	<br>
+	<h2 style="text-align:center">List of all the Users!</h2>
+		<!-- <table style="width:75%">
+			<tr>
+				<th>Delete</th>
+				<th>Edit</th>
+				<th>Task Name</th>
+				<th>Task Details</th>
+				<th>Date</th>
+				<th>Status</th>
+				<th>Task Complete</th>
+				<th>Task InComplete</th>
+			</tr>
+		</table> -->
+	  	<div *ngFor="let user of userArray">
+	    	<table style="width:75%">
+				  <tr>
+					<td>{{user.id}}</td>
+					<td>{{user.userName}}</td>
+					<td>{{user.groupid}}</td>
+					<td><button (click)="delete(user);">
+						<i class="material-icons">&#xe872;</i>
+ 					</button></td>
+				  </tr>
+			</table>
+	  	</div>
+</div>
+<div style="text-align:center" *ngIf="userAddingActivation">
+  		<h2 style="text-align:center">Add Users</h2>
+  		<label>Tell me user's name
+	    	<input #username />
+	  	</label>
+	  	<br>
+	  	<br/>
+	  	<label>Password for user
+	    	<input #password />
+	  	</label>
+	  	<br>
+	  	<br/>
+	  	<label>Group - 
+		  	<select #optionV>
+	  			<option value="Universal">None</option>
+		  		<option value="GroupA">Group A</option>
+				<option value="GroupB">Group B</option>
+				<option value="GroupC">Group C</option>
+				<option value="GroupD">Group D</option>
+			</select>
+		</label>
+		<br>
+	  	<br/>
+		<button (click)="addUserToDB(22, username.value, password.value, optionV.value);">
+    		<i class="material-icons">&#xe7fb;</i> Add User With Existing Group
+  		</button>
+		<!-- <select #optionV >
+   			<option [value]="user.name" *ngFor="let user of userNameArray">{{user.name|uppercase}}</option>
+ 		</select> -->
+ 		<br>
+	  	<br/>
+	  	<label>New Group?
+	    	<input #groupid />
+	  	</label>
+	  	<br>
+	  	<br/>
+		<button (click)="addUserToDB(22, username.value, password.value, groupid.value);">
+    		<i class="material-icons">&#xe7fc;</i> Add User!
+  		</button>
+  		<div style="text-align:center" *ngIf="showSuccessSymbol">
+ 			<i class="material-icons" style="font-size:48px;color:green">&#xe877;</i>
+ 		</div>
+</div>
+</body>
+</html>
